@@ -17,8 +17,10 @@ jasmine v3.3.0
 jasmine-core v3.3.0
 
 
-npm=  node package manager 	> allows you to install node plugins (i.e. Jasmine) 
+npm =  node package manager 	> allows you to install node plugins (i.e. Jasmine) 
+
 npm list -g --depth 0 		> show globall installed packages
+
 npm install -g jasmine		> install jasmine if not installed already	
 
 
