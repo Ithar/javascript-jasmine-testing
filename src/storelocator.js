@@ -1,14 +1,3 @@
-
-var Calculator = function() {
-
-    return {
-
-        hello : function() {
-            return "Hello World";
-        }
-    }
-};
-
 var STORE_LOCATOR = {
 
     host : {
