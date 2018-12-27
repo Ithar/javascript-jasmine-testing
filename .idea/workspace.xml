@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4805fa96-7a06-4b52-bd20-2819c611c5c0" name="Default" comment="Added to readme">
-      <change afterPath="$PROJECT_DIR$/spec/calculatorSpec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/storelocator.js" afterDir="false" />
+    <list default="true" id="4805fa96-7a06-4b52-bd20-2819c611c5c0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/spec/storelocatorSpec.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jasmine-test-runner.html" beforeDir="false" afterPath="$PROJECT_DIR$/jasmine-test-runner.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/helloWorldSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/helloWorldSpec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helloWorld.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/calculator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/calculatorSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/calculatorSpec.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,20 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="calculatorSpec.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="calculatorSpec.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/calculatorSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calculator.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/calculator.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+            <state relative-caret-position="68">
+              <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -50,8 +38,17 @@
       <file leaf-file-name="storelocator.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/storelocator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+            <state relative-caret-position="119">
+              <caret line="7" column="40" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="storelocatorSpec.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -71,8 +68,8 @@
       <file leaf-file-name="jasmine-test-runner.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jasmine-test-runner.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+            <state relative-caret-position="374">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -110,9 +107,10 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/spec/helloWorldSpec.js" />
         <option value="$PROJECT_DIR$/src/storelocator.js" />
-        <option value="$PROJECT_DIR$/jasmine-test-runner.html" />
         <option value="$PROJECT_DIR$/src/calculator.js" />
+        <option value="$PROJECT_DIR$/jasmine-test-runner.html" />
         <option value="$PROJECT_DIR$/spec/calculatorSpec.js" />
+        <option value="$PROJECT_DIR$/spec/storelocatorSpec.js" />
       </list>
     </option>
   </component>
@@ -152,12 +150,6 @@
             <path>
               <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
               <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
-              <item name="spec" type="462c0819:PsiDirectoryNode" />
-              <item name="support" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -188,6 +180,7 @@
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec\support" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src\spec" />
@@ -275,7 +268,7 @@
       <workItem from="1544096008664" duration="7599000" />
       <workItem from="1544120168938" duration="97000" />
       <workItem from="1544176908044" duration="54000" />
-      <workItem from="1545931580439" duration="1485000" />
+      <workItem from="1545931580439" duration="1875000" />
     </task>
     <task id="LOCAL-00001" summary="Just some comments">
       <created>1544117527041</created>
@@ -305,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544176949209</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added extra specs.">
+      <created>1545933107448</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1545933107448</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -317,7 +317,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12194000" />
+    <option name="totallyTimeSpent" value="12584000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -362,7 +362,8 @@
     <MESSAGE value="Just some comments" />
     <MESSAGE value="Working version." />
     <MESSAGE value="Added to readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added to readme" />
+    <MESSAGE value="Added extra specs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added extra specs." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/spec/helloWorldSpec.js">
@@ -499,17 +500,17 @@
       </provider>
       <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/jasmine-test-runner.html">
+    <entry file="file://$PROJECT_DIR$/src/calculator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        <state relative-caret-position="119">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/storelocator.js">
+    <entry file="file://$PROJECT_DIR$/jasmine-test-runner.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -520,17 +521,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/calculator.js">
+    <entry file="file://$PROJECT_DIR$/src/storelocator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/calculatorSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        <state relative-caret-position="68">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
         </state>
       </provider>
     </entry>
