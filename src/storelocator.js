@@ -26,6 +26,8 @@ var STORE_LOCATOR = {
     },
     checkConfig : function() {
 
+        console.log('TOP');
+
         var storeLocator = document.getElementById('sl-store-locator');
 
         if (storeLocator === undefined) {
@@ -33,14 +35,19 @@ var STORE_LOCATOR = {
             return false;
         }
 
+        console.log('GOOD'+storeLocator);
         var env = storeLocator.getAttribute('data-env');
         var brand = storeLocator.getAttribute('data-brand');
         var build = storeLocator.getAttribute('data-build');
+
+        console.log('BOTTOM');
 
         if (env === undefined || brand === undefined) {
             console.log('ERROR: SL-LOAD-60b7cfb: store locator element MUST have a data-brand and data-host.');
             return false;
         }
+
+        console.log('SETTING');
 
         this.config.env = env;
         this.config.brand = brand;
