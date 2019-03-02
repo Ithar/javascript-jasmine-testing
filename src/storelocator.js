@@ -26,8 +26,6 @@ var STORE_LOCATOR = {
     },
     checkConfig : function() {
 
-        console.log('TOP');
-
         var storeLocator = document.getElementById('sl-store-locator');
 
         if (storeLocator === undefined) {
@@ -35,7 +33,7 @@ var STORE_LOCATOR = {
             return false;
         }
 
-        console.log('GOOD'+storeLocator);
+        console.log('GOOD:'+storeLocator);
         var env = storeLocator.getAttribute('data-env');
         var brand = storeLocator.getAttribute('data-brand');
         var build = storeLocator.getAttribute('data-build');

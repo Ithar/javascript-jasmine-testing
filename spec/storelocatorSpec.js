@@ -38,6 +38,7 @@ var UIComponents = (function() {
     // DIV ELEMENT
     function div(id, cssClasses, dataAttributes) {
         var element = document.createElement("div");
+
         if (id !== undefined) {
             element.id = id;
         }
