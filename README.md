@@ -7,6 +7,10 @@ https://www.youtube.com/watch?v=dFz2h7o0vqs
 
 https://www.youtube.com/watch?v=ZeOKTrohqXA
 
+# Articles 
+https://christosmonogios.com/2016/09/08/How-To-Test-The-HTML-Elements-And-Their-DOM-Properties-When-Using-The-Jasmine-Framework/
+
+
 #  Installation
 C:\dev\software\nodejs
 
