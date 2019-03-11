@@ -9,6 +9,7 @@ https://www.youtube.com/watch?v=ZeOKTrohqXA
 
 # Articles 
 https://christosmonogios.com/2016/09/08/How-To-Test-The-HTML-Elements-And-Their-DOM-Properties-When-Using-The-Jasmine-Framework/
+https://blog.toast38coza.me/mocking-ajax-requests-with-jasmine/
 
 
 #  Installation

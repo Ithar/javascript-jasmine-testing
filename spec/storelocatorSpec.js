@@ -16,6 +16,16 @@ describe("A test 'STORE LOCATOR' test suite", function () {
         body.appendChild(div);
     });
 
+    beforeEach(function() {
+        jasmine.Ajax.install();
+    });
+
+    /*
+    afterEach(function() {
+        jasmine.Ajax.uninstall();
+    });
+    */
+
     // 1. Basic Function
     it("COMMON_SERVICE.calculateZoomLevel(): calculate the zoom levels", function() {
 
@@ -44,6 +54,7 @@ describe("A test 'STORE LOCATOR' test suite", function () {
 
     // 3. Ajax Function
 
+    // 4. Promises
 
 });
 
