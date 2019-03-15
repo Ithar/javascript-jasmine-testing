@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4805fa96-7a06-4b52-bd20-2819c611c5c0" name="Default" comment="Fixed DOM function.">
-      <change afterPath="$PROJECT_DIR$/spec/helpers/mock-ajax.js" afterDir="false" />
+    <list default="true" id="4805fa96-7a06-4b52-bd20-2819c611c5c0" name="Default" comment="Trying to add helper function.">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jasmine.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/helpers/mock-ajax.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/storelocatorSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/storelocatorSpec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/support/jasmine.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test-runner-storelocator.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-runner-storelocator.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,17 +24,47 @@
       <file leaf-file-name="storelocatorSpec.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+            <state relative-caret-position="334">
+              <caret line="78" column="2" selection-start-line="78" selection-start-column="2" selection-end-line="78" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="jasmine.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/support/jasmine.json">
+        <entry file="file://$PROJECT_DIR$/jasmine.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            <state relative-caret-position="187">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test-runner-storelocator.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mock-ajax.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/jasmine-ajax/lib/mock-ajax.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-666">
+              <caret line="534" column="55" lean-forward="true" selection-start-line="534" selection-start-column="55" selection-end-line="534" selection-end-column="55" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,31 +73,10 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="204">
-                <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <first_editor relative-caret-position="561">
+                <caret line="33" selection-start-line="33" selection-end-line="33" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mock-ajax.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spec/helpers/mock-ajax.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6343">
-              <caret line="834" column="31" selection-start-line="834" selection-start-column="23" selection-end-line="834" selection-end-column="31" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test-runner-storelocator.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="17" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -74,8 +86,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -94,6 +106,10 @@
       <find>Ajax</find>
       <find>jasmine.Ajax</find>
       <find>helpers</find>
+      <find>uninstall</find>
+      <find>install</find>
+      <find>jasmine</find>
+      <find>&quot;helpers/**/*.js&quot;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -120,9 +136,19 @@
         <option value="$PROJECT_DIR$/test-runner-hello-world.html" />
         <option value="$PROJECT_DIR$/src/storelocator.js" />
         <option value="$PROJECT_DIR$/helpers/mock-ajax.js" />
-        <option value="$PROJECT_DIR$/test-runner-storelocator.html" />
-        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/spec/helpers/temp.js" />
         <option value="$PROJECT_DIR$/spec/support/jasmine.json" />
+        <option value="$PROJECT_DIR$/support/jasmine.json" />
+        <option value="$PROJECT_DIR$/spec/helpers/logHelper.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/jasmine.json" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/temp/jasmine3.3.0.js" />
+        <option value="$PROJECT_DIR$/lib/jasmine-html.min.js" />
+        <option value="$PROJECT_DIR$/spec/helpers/mock-ajax.js" />
+        <option value="$PROJECT_DIR$/test-runner-storelocator.html" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/node_modules/jasmine-ajax/lib/mock-ajax.js" />
         <option value="$PROJECT_DIR$/spec/storelocatorSpec.js" />
       </list>
     </option>
@@ -133,14 +159,19 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
   <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1060" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -148,8 +179,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -158,21 +187,12 @@
               <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
               <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
-              <item name="spec" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
-              <item name="spec" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -182,23 +202,25 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec" />
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine" />
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src" />
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec\support" />
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src\spec" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec\js" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src\spec" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\runner" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec\helpers" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\helpers" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -235,6 +257,7 @@
     </configuration>
     <configuration name="test-runner-calculator.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Jasmine/test-runner-calculator.html" />
     <configuration name="test-runner-hello-world.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Jasmine/test-runner-hello-world.html" />
+    <configuration name="test-runner-storelocator.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Jasmine/runner/test-runner-storelocator.html" />
     <configuration name="test-runner-storelocator.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Jasmine/test-runner-storelocator.html" />
     <configuration name="Unnamed" type="JavascriptTestRunnerJasmine" factoryName="Jasmine" temporary="true" nameIsGenerated="true" />
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -264,10 +287,12 @@
       <item itemvalue="Jasmine.Unnamed" />
       <item itemvalue="JavaScript Debug.test-runner-calculator.html" />
       <item itemvalue="JavaScript Debug.test-runner-hello-world.html" />
+      <item itemvalue="JavaScript Debug.test-runner-storelocator.html (1)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.test-runner-storelocator.html" />
+        <item itemvalue="JavaScript Debug.test-runner-storelocator.html (1)" />
         <item itemvalue="JavaScript Debug.test-runner-hello-world.html" />
         <item itemvalue="JavaScript Debug.test-runner-calculator.html" />
         <item itemvalue="Jasmine.Unnamed" />
@@ -303,7 +328,10 @@
       <workItem from="1552064554190" duration="3318000" />
       <workItem from="1552206139536" duration="1231000" />
       <workItem from="1552296692668" duration="1068000" />
-      <workItem from="1552317620844" duration="3543000" />
+      <workItem from="1552317620844" duration="4268000" />
+      <workItem from="1552659978819" duration="4721000" />
+      <workItem from="1552669099051" duration="3871000" />
+      <workItem from="1552673005353" duration="105000" />
     </task>
     <task id="LOCAL-00001" summary="Just some comments">
       <created>1544117527041</created>
@@ -375,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552067016961</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Trying to add helper function.">
+      <created>1552321635307</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1552321635307</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -387,7 +422,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37883000" />
+    <option name="totallyTimeSpent" value="47305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -401,26 +436,26 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.21103896" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3474026" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24733475" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17963752" />
       <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.25246826" />
       <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.2521645" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,116 +474,10 @@
     <MESSAGE value="Started adding DOM elements test framework testing failed." />
     <MESSAGE value="Restructured the project." />
     <MESSAGE value="Fixed DOM function." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed DOM function." />
+    <MESSAGE value="Trying to add helper function." />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to add helper function." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="442">
-            <caret line="26" column="42" lean-forward="true" selection-start-line="26" selection-end-line="27" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/helloWorldSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/calculatorSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="578">
-            <caret line="34" selection-start-line="34" selection-end-line="34" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/storelocator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="2" lean-forward="true" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/helloWorldSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/calculatorSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/storelocator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="578">
-            <caret line="34" selection-start-line="34" selection-end-line="34" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -718,9 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Jasmine.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/calculator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -762,54 +688,81 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="754">
           <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/helpers/mock-ajax.js">
+    <entry file="file://$PROJECT_DIR$/Jasmine.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/temp.js" />
+    <entry file="file://$PROJECT_DIR$/spec/helpers/mockajax.js" />
+    <entry file="file://$PROJECT_DIR$/helpers/mock-ajax.js" />
+    <entry file="file://$PROJECT_DIR$/spec/helpers/temp.js" />
+    <entry file="file://$PROJECT_DIR$/spec/helpers/mock_ajaxSpec.js" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6343">
-          <caret line="834" column="31" selection-start-line="834" selection-start-column="23" selection-end-line="834" selection-end-column="31" />
+        <state>
+          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/helpers/logHelper.js" />
+    <entry file="file://$PROJECT_DIR$/lib/jasmine-html.min.3.3.0.js" />
+    <entry file="file://$PROJECT_DIR$/lib/jasmine.3.3.0.js" />
+    <entry file="file://$PROJECT_DIR$/lib/boot.min.3.3.0.js" />
+    <entry file="file://$PROJECT_DIR$/node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/helpers/mock-ajax.js" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="561">
+            <caret line="33" selection-start-line="33" selection-end-line="33" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jasmine.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runner/test-runner-storelocator.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/jasmine-ajax/lib/mock-ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-666">
+          <caret line="534" column="55" lean-forward="true" selection-start-line="534" selection-start-column="55" selection-end-line="534" selection-end-column="55" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/support/jasmine.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="204">
-            <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        <state relative-caret-position="334">
+          <caret line="78" column="2" selection-start-line="78" selection-start-column="2" selection-end-line="78" selection-end-column="2" />
         </state>
       </provider>
     </entry>

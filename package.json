@@ -1,0 +1,17 @@
+{
+  "name": "jasmine-with-helpers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": ".\\node_modules\\.bin\\jasmine JASMINE_CONFIG_PATH=jasmine.json"
+  },
+  "author": "Ithar Malik",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.3.1"
+  },
+  "dependencies": {
+    "jasmine-ajax": "^3.1.1"
+  }
+}

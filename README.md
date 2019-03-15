@@ -30,7 +30,7 @@ jasmine-core v3.3.0
 * npm list -g --depth 0 		> show global installed packages
 
 * npm install -g jasmine		> install jasmine if not installed already	
-
+* npm install jasmine-ajax
 
 # Jasmine 
 

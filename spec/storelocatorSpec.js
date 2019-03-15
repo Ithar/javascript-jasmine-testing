@@ -20,16 +20,13 @@ describe("A test 'STORE LOCATOR' test suite", function () {
         jasmine.Ajax.install();
     });
 
-    /*
     afterEach(function() {
         jasmine.Ajax.uninstall();
     });
-    */
 
     // 1. Basic Function
     it("COMMON_SERVICE.calculateZoomLevel(): calculate the zoom levels", function() {
-
-        var location1 = {
+            var location1 = {
             lat : 40.581766,
             lng : -73.961525
         };
@@ -53,8 +50,35 @@ describe("A test 'STORE LOCATOR' test suite", function () {
     });
 
     // 3. Ajax Function
+    /*
+    it("specifying response when you need it", function() {
+        var doneFn = jasmine.createSpy("success");
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(args) {
+            if (this.readyState == this.DONE) {
+                doneFn(this.responseText);
+            }
+        };
 
-    // 4. Promises
+        xhr.open("GET", "/some/cool/url");
+        xhr.send();
+
+
+
+        expect(jasmine.Ajax.requests.mostRecent().url).toBe('/some/cool/url');
+        expect(doneFn).not.toHaveBeenCalled();
+
+        jasmine.Ajax.requests.mostRecent().response({
+            "status": 200,
+            "contentType": 'text/plain',
+            "responseText": 'awesome response'
+        });
+
+        expect(doneFn).toHaveBeenCalledWith('awesome response');
+    });
+*/
+
+        // 4. Promises
 
 });
 
