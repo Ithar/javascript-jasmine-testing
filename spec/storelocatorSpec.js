@@ -43,42 +43,53 @@ describe("A test 'STORE LOCATOR' test suite", function () {
     });
 
     // 2. DOM Dependent Function
-    it("checkConfig(): check store locator DOM config", function() {
+    it("main.checkConfig(): check store locator DOM config", function() {
         var actual = STORE_LOCATOR.checkConfig();
         var expected = true;
         expect(actual).toEqual(expected);
     });
 
     // 3. Ajax Function
-    /*
-    it("specifying response when you need it", function() {
+    it("AJAX_SERVICE.getProductsAjax() check product filter Ajax ", function() {
+
+        spyOn(BRAND_SERVICE, 'getBrandId').and.returnValue(1);
+        var endpoint = AJAX_SERVICE.getEndpoint();
+        var brandId = BRAND_SERVICE.getBrandId();
+
+        var url = endpoint+'/brand/'+brandId+'/products/';
+        expect(url).toEqual('https://bacardi.com//v3/api/brand/1/products/');
+
+        /*
+        jasmine.Ajax.stubRequest('YOUR_URL_HERE').andReturn({
+            responseText: 'YOUR_RAW_STUBBED_DATA_HERE'
+        });
+
         var doneFn = jasmine.createSpy("success");
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(args) {
-            if (this.readyState == this.DONE) {
-                doneFn(this.responseText);
+            if (this.readyState === this.DONE) {
+                doneFn(this.responseJson);
             }
         };
 
         xhr.open("GET", "/some/cool/url");
         xhr.send();
 
-
-
         expect(jasmine.Ajax.requests.mostRecent().url).toBe('/some/cool/url');
         expect(doneFn).not.toHaveBeenCalled();
 
-        jasmine.Ajax.requests.mostRecent().response({
+        jasmine.Ajax.requests.mostRecent().respondWith({
             "status": 200,
-            "contentType": 'text/plain',
-            "responseText": 'awesome response'
+            "contentType": 'application/json',
+            "responseJson": ''
         });
 
         expect(doneFn).toHaveBeenCalledWith('awesome response');
-    });
-*/
+        */
 
-        // 4. Promises
+    });
+
+    // 4. Promises
 
 });
 
