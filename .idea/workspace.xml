@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4805fa96-7a06-4b52-bd20-2819c611c5c0" name="Default" comment="">
+    <list default="true" id="4805fa96-7a06-4b52-bd20-2819c611c5c0" name="Default" comment="Trying to work with ajax calls.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/helloWorldSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/helloWorldSpec.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/storelocatorSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/storelocatorSpec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storelocator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/storelocator.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,12 +15,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="test-runner-storelocator.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -28,17 +28,23 @@
       <file leaf-file-name="storelocatorSpec.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
+            <state relative-caret-position="439">
+              <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="calculator.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/calculator.js">
+      <file leaf-file-name="storelocator.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/storelocator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+            <state relative-caret-position="417">
+              <caret line="1040" column="57" selection-start-line="1040" selection-start-column="56" selection-end-line="1040" selection-end-column="57" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,6 +82,7 @@
       <find>BRAND_SERVICE</find>
       <find>getBrandConfig</find>
       <find>getBrandId</find>
+      <find>AJAX_SERVICE</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,8 +120,8 @@
         <option value="$PROJECT_DIR$/test-runner-storelocator.html" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/node_modules/jasmine-ajax/lib/mock-ajax.js" />
-        <option value="$PROJECT_DIR$/src/storelocator.js" />
         <option value="$PROJECT_DIR$/spec/helloWorldSpec.js" />
+        <option value="$PROJECT_DIR$/src/storelocator.js" />
         <option value="$PROJECT_DIR$/spec/storelocatorSpec.js" />
       </list>
     </option>
@@ -134,10 +141,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="232" />
+    <option name="y" value="301" />
+    <option name="width" value="1938" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -147,7 +154,6 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -155,27 +161,18 @@
               <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
               <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
-              <item name="spec" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../ThoughtWorks" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -268,10 +265,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.test-runner-storelocator.html" />
+        <item itemvalue="Jasmine.Unnamed" />
         <item itemvalue="JavaScript Debug.test-runner-storelocator.html (1)" />
         <item itemvalue="JavaScript Debug.test-runner-hello-world.html" />
         <item itemvalue="JavaScript Debug.test-runner-calculator.html" />
-        <item itemvalue="Jasmine.Unnamed" />
       </list>
     </recent_temporary>
   </component>
@@ -309,7 +306,12 @@
       <workItem from="1552669099051" duration="3871000" />
       <workItem from="1552673005353" duration="221000" />
       <workItem from="1552901896724" duration="428000" />
-      <workItem from="1552927126243" duration="5681000" />
+      <workItem from="1552927126243" duration="7423000" />
+      <workItem from="1552984942239" duration="596000" />
+      <workItem from="1552988000022" duration="68000" />
+      <workItem from="1553411852902" duration="2629000" />
+      <workItem from="1553506536470" duration="1264000" />
+      <workItem from="1553530918104" duration="6014000" />
     </task>
     <task id="LOCAL-00001" summary="Just some comments">
       <created>1544117527041</created>
@@ -395,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552673212500</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Trying to work with ajax calls.">
+      <created>1552933023619</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1552933023619</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -405,9 +414,12 @@
     <history-entry file="Unnamed - 2018.12.27 at 17h 39m 58s.xml">
       <configuration name="Unnamed" configurationId="JavascriptTestRunnerJasmine" />
     </history-entry>
+    <history-entry file="Unnamed - 2019.03.24 at 07h 32m 49s.xml">
+      <configuration name="Unnamed" configurationId="JavascriptTestRunnerJasmine" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53530000" />
+    <option name="totallyTimeSpent" value="65843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -421,12 +433,12 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32863188" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3474026" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18283582" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19402985" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -461,16 +473,10 @@
     <MESSAGE value="Fixed DOM function." />
     <MESSAGE value="Trying to add helper function." />
     <MESSAGE value="Trying to add get helper functions working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to add get helper functions working." />
+    <MESSAGE value="Trying to work with ajax calls." />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to work with ajax calls." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/helloWorldSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -712,26 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/storelocator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="528" column="4" selection-start-line="528" selection-start-column="4" selection-end-line="528" selection-end-column="4" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/helloWorldSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
@@ -742,22 +728,74 @@
     <entry file="file://$PROJECT_DIR$/src/calculator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="970" column="4" selection-start-line="970" selection-start-column="4" selection-end-line="970" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-runner-storelocator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/storelocator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="1040" column="57" selection-start-line="1040" selection-start-column="56" selection-end-line="1040" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
+        <state relative-caret-position="439">
+          <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>jasmine</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -774,6 +812,19 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Jasmine</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

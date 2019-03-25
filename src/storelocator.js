@@ -14,7 +14,7 @@ var STORE_LOCATOR = {
         "UI" : "https://storelocatorbackend-dev.spika.com",
         "QA" : "https://storelocatorbackend-dev.spika.com",
         "STG" : "https://sl-bacardi-com-staging.bacardistaging.com",
-        "PROD" : "https://bacardi.com/"
+        "PROD" : "https://bacardi.com"
     },
     init : function() {
 
@@ -1035,10 +1035,12 @@ var PRODUCT_FILTER_SERVICE = {
             item = item.replace(/PLACEHOLDER_ID/g, id);
 
             filterItems = filterItems+item.trim();
+
         });
 
         $('#slProductFilter')[0].innerHTML = filterItems;
         $('#slProductFilterCount').text(products.length+' '+MESSAGES_SERVICE.getMessages().product_filter.products);
+
     },
     activateProductFilter : function(productFilter, active) {
         console.log('activateProductFilter()');
