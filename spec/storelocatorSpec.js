@@ -84,17 +84,12 @@ describe("A test 'STORE LOCATOR' test suite", function () {
     */
 
     // 4. Promises
+    /*
     describe('Example 4: Promise test suite:', function(){
         it("PLACES_SERVICE.amalgamateWithGoogleData() check failed places API call", function(done) {
 
             var searchResults = MOCKED_DATA.searchResults();
             var activeLocations = searchResults.bars;
-
-            var bar = activeLocations[0];
-
-            var actualId = bar.id;
-            var expectedId = 166115;
-            expect(actualId).toEqual(expectedId);
 
             spyOn(PLACES_SERVICE, 'promisePlaceData').and.returnValue(Promise.reject());
 
@@ -102,7 +97,7 @@ describe("A test 'STORE LOCATOR' test suite", function () {
 
             new Promise(function() {
                 setTimeout(function() {
-                    var actualPlaceId = bar.place_id;
+                    var actualPlaceId = activeLocations[0].place_id;
                     var expectedPlaceId = 'UNKNOWN';
                     expect(actualPlaceId).toEqual(expectedPlaceId);
                     done();
@@ -110,6 +105,7 @@ describe("A test 'STORE LOCATOR' test suite", function () {
             });
         });
     });
+    */
 });
 
 var UI_COMPONENTS = {

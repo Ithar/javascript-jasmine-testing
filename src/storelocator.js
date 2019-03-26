@@ -1915,15 +1915,6 @@ var PLACES_SERVICE = {
                     console.log("WARN: SL-PLACE-PROMISE-5ad660: REJECTED ["+location.id+"]");
                     PLACES_SERVICE.amalgamateFailed(location);
                 });
-                /* [IM 19-03-07] - Not supported by IE/Edge
-                .finally(function () {
-                    count++;
-                    if (count === locationSize) {
-                        PLACES_SERVICE.amalgamationCompleted(searchResults);
-                    }
-                });
-                */
-
             } else {
                 count++;
                 if (count === locationSize) {
@@ -1931,8 +1922,6 @@ var PLACES_SERVICE = {
                 }
             }
         });
-
-        PLACES_SERVICE.delayInterval = 500;
     },
     amalgamationCompleted : function(searchResults) {
 
