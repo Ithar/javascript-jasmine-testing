@@ -1,7 +1,6 @@
 describe("A test 'STORE LOCATOR' test suite", function () {
 
     beforeAll(function() {
-
         var configDiv = UI_COMPONENTS.createConfigDiv();
         var filterDiv =  UI_COMPONENTS.createFilterDiv();
         var filterCounterDiv =  UI_COMPONENTS.createFilterCounterDiv();
@@ -10,7 +9,6 @@ describe("A test 'STORE LOCATOR' test suite", function () {
         body.appendChild(configDiv);
         body.appendChild(filterDiv);
         body.appendChild(filterCounterDiv);
-
     });
 
     beforeEach(function() {
@@ -42,6 +40,7 @@ describe("A test 'STORE LOCATOR' test suite", function () {
     });
 
     // 2. DOM Dependent Function
+    /*
     describe('Example 2: DOM Dependent Function test suite:', function(){
         it("main.checkConfig(): check store locator DOM config", function() {
             var actual = STORE_LOCATOR.checkConfig();
@@ -49,7 +48,9 @@ describe("A test 'STORE LOCATOR' test suite", function () {
             expect(actual).toEqual(expected);
         });
     });
+    */
 
+    /*
     // 3. Ajax Function
     describe('Example 3: Ajax Function test suite:', function(){
         it("AJAX_SERVICE.getProductsAjax() check product filter Ajax ", function() {
@@ -80,9 +81,35 @@ describe("A test 'STORE LOCATOR' test suite", function () {
             expect(actual).toEqual(expected);
         });
     });
+    */
 
     // 4. Promises
+    describe('Example 4: Promise test suite:', function(){
+        it("PLACES_SERVICE.amalgamateWithGoogleData() check failed places API call", function(done) {
 
+            var searchResults = MOCKED_DATA.searchResults();
+            var activeLocations = searchResults.bars;
+
+            var bar = activeLocations[0];
+
+            var actualId = bar.id;
+            var expectedId = 166115;
+            expect(actualId).toEqual(expectedId);
+
+            spyOn(PLACES_SERVICE, 'promisePlaceData').and.returnValue(Promise.reject());
+
+            PLACES_SERVICE.amalgamateWithGoogleData(searchResults, activeLocations);
+
+            new Promise(function() {
+                setTimeout(function() {
+                    var actualPlaceId = bar.place_id;
+                    var expectedPlaceId = 'UNKNOWN';
+                    expect(actualPlaceId).toEqual(expectedPlaceId);
+                    done();
+                }, 3000);
+            });
+        });
+    });
 });
 
 var UI_COMPONENTS = {
@@ -134,7 +161,7 @@ var UI_COMPONENTS = {
         return element;
     }
 };
-// http://icons.iconarchive.com/icons/icons8/ios7/48/Travel-Water-Bottle-icon.png
+
 var MOCKED_DATA = {
     brand : function() {
         return {"id": 1,"name": "greygooseUS","country": "US","product_default_image": "http://icons.iconarchive.com/icons/icons8/ios7/48/Travel-Water-Bottle-icon.png"};
@@ -144,5 +171,8 @@ var MOCKED_DATA = {
     },
     messages : function () {
         return {"product_filter": {"products": "producst"}};
+    },
+    searchResults : function() {
+        return {"stores": [{"id": 133765,"name": "FINANCIAL DISTRICT WINES & LIQUOR","address": {"line1": "120 NASSAU ST","city": "NEW YORK","zipcode": "10038","phone": "2129331092"},"latitude": 40.710787,"longitude": -74.006807,"products": [6],"place_id": "","place_name": "","place_rating": "","place_icon": "","place_open_now": "","place_price_level": "","place_menu": "","place_website": "","place_review": "","place_phone": "","place_reviews_count": 0,"place_opens_at": "","place_vicinity": "","place_opening_time1": "","place_opening_time2": "","place_opening_time3": "","place_opening_time4": "","place_opening_time5": "","place_opening_time6": "","place_opening_time7": ""}],"bars": [{"id": 166115,"name": "THE BEEKMAN","address": {"line1": "5 BEEKMAN ST","city": "NEW YORK","zipcode": "10038","phone": "2122332300"},"latitude": 40.711275,"longitude": -74.006772,"products": [6],"place_id": "","place_name": "","place_rating": "","place_icon": "","place_open_now": "","place_price_level": "","place_menu": "","place_website": "","place_review": "","place_phone": "","place_reviews_count": 0,"place_opens_at": "","place_vicinity": "","place_opening_time1": "","place_opening_time2": "","place_opening_time3": "","place_opening_time4": "","place_opening_time5": "","place_opening_time6": "","place_opening_time7": ""}]};
     }
 };

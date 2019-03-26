@@ -1,5 +1,5 @@
 var STORE_LOCATOR = {
-    VERSION: 'v1.0.2',
+    VERSION: 'v2.0.1',
     api : {
         "endpoint" : "/api",
         "version" : "/v3"
@@ -14,7 +14,7 @@ var STORE_LOCATOR = {
         "UI" : "https://storelocatorbackend-dev.spika.com",
         "QA" : "https://storelocatorbackend-dev.spika.com",
         "STG" : "https://sl-bacardi-com-staging.bacardistaging.com",
-        "PROD" : "https://bacardi.com"
+        "PROD" : "https://bacardi.com/"
     },
     init : function() {
 
@@ -139,7 +139,6 @@ var STORE_LOCATOR = {
                     COMMON_SERVICE.containerChange('map');
                 }
             }
-
         });
 
         // Show List/Map
@@ -218,8 +217,28 @@ var STORE_LOCATOR = {
         });
 
         // Direction
-        $(document).on('click', '.sl-direction-link', function () {
-            DIRECTION_SERVICE.openExternalMap($(this).data('id'));
+        $(document).on('click', '.slDirectionLink', function (e) {
+            e.stopPropagation();
+
+            var id = $(this).data('id');
+            DIRECTION_SERVICE.openExternalMap(id);
+
+            var placeId = $('#slAddressItem-'+id).attr('data-place-id');
+            if (placeId === undefined || placeId === '') {
+                placeId = ANALYTICS_SERVICE.placeDatalayerDefaultPlaceId;
+            }
+
+            ANALYTICS_SERVICE.pushDirectionClickEvent(ANALYTICS_SERVICE.createPlaceDataLayer(placeId));
+        });
+
+        // Telephone
+        $(document).on('click', '.slTelephone', function () {
+
+            var id = $(this).data('id');
+            var placeId = $('#slAddressItem-'+id).attr('data-place-id');
+            if (placeId !== undefined) {
+                ANALYTICS_SERVICE.pushTelephoneClickEvent(ANALYTICS_SERVICE.createPlaceDataLayer(placeId));
+            }
         });
 
         // Address Item Click
@@ -370,7 +389,7 @@ var AJAX_SERVICE =  {
             console.log('ERROR: SL-PRODUCT-bc7b5e1: Failed to get products via url:'+url);
         });
     },
-    searchLocationAjax : function(location) {
+    searchLocationAjax : function(location, searchDatalayer) {
 
         if (location !== undefined) {
 
@@ -391,6 +410,9 @@ var AJAX_SERVICE =  {
                 RESULTS_SERVICE.saveLoadedResults(prunedData);
                 RESULTS_SERVICE.saveFilteredResults(prunedData);
                 RESULTS_SERVICE.saveStoredResults(data);
+
+                searchDatalayer.search_status = ANALYTICS_SERVICE.getSearchEventStatus(RESULTS_SERVICE.getStoredResults());
+                ANALYTICS_SERVICE.pushSearchEvent(searchDatalayer);
             })
             .fail(function() {
                 console.log('ERROR: SL-SEARCH-LOCATION-4ca01f3: Failed to perform location search:'+url);
@@ -547,6 +569,7 @@ var BRAND_SERVICE = {
 };
 var ADDRESS_SERVICE = {
 
+    removalableIds : [],
     amalgamateAndProcessAddresses : function(searchResults) {
 
         var activeLocations;
@@ -576,6 +599,8 @@ var ADDRESS_SERVICE = {
 
         console.log('populateAddresses(): '+type);
 
+        ADDRESS_SERVICE.removalableIds = [];
+
         var addresses = '';
         var count = 1;
         $.each(locations, function (index, location) {
@@ -591,13 +616,16 @@ var ADDRESS_SERVICE = {
             count++;
         });
 
+        ADDRESS_SERVICE.removalableIds.forEach(function(element) {
+            $(element).remove();
+        });
     },
-    populateAddressData: function(location, item, type, index) {
+    populateAddressData: function(location, addressTemplate, type, index) {
 
         console.log('populateAddressData():'+location.place_id);
 
         try {
-            item = item.replace(/PLACEHOLDER_ID/g, location.id)
+            addressTemplate = addressTemplate.replace(/PLACEHOLDER_ID/g, location.id)
             .replace('PLACEHOLDER_TYPE', type)
             .replace('PLACEHOLDER_COUNTER', index)
             .replace('PLACEHOLDER_LAT', location.latitude)
@@ -611,7 +639,7 @@ var ADDRESS_SERVICE = {
             .replace('PLACEHOLDER_PHOTO_LARGE', location.image);
 
             if (location.place_id !== 'UNKNOWN') {
-                item = item.replace('GOOGLE_PLACE_ID', location.place_id)
+                addressTemplate = addressTemplate.replace('GOOGLE_PLACE_ID', location.place_id)
                 .replace('GOOGLE_OPEN_NOW', location.place_open_now)
                 .replace(/GOOGLE_PRICE_LEVEL/g, location.place_price_level)
                 .replace('GOOGLE_RATING_ROUNDED', location.place_rating_rounded)
@@ -631,13 +659,29 @@ var ADDRESS_SERVICE = {
                 .replace('GOOGLE_OPENING_TIME5', location.place_opening_time5)
                 .replace('GOOGLE_OPENING_TIME6', location.place_opening_time6)
                 .replace('GOOGLE_OPENING_TIME7', location.place_opening_time7);
+
+                if (location.place_opening_time1 === undefined || location.place_opening_time1 === '') {
+                    ADDRESS_SERVICE.removalableIds.push('#slOpeningTimes-'+location.id);
+                }
+
+                if (location.place_phone === undefined || location.place_phone === '') {
+                    ADDRESS_SERVICE.removalableIds.push('#slTelephone-'+location.id);
+                }
+
+                if (location.place_website === undefined || location.place_website === '') {
+                    ADDRESS_SERVICE.removalableIds.push('#slWebsite-'+location.id);
+                }
+
+                if (location.place_opens_at === undefined || location.place_opens_at === '') {
+                    ADDRESS_SERVICE.removalableIds.push('#slOpensAt-'+location.id);
+                }
             }
 
         } catch (err) {
             console.log('error:'+err);
         }
 
-        return item;
+        return addressTemplate;
     },
     clearAddresses : function() {
         console.log('clearAddresses()');
@@ -680,8 +724,11 @@ var SEARCH_SERVICE = {
 
             var geocoder = GEOLOCATION_SERVICE.geocoder;
 
+            var searchDatalayer = ANALYTICS_SERVICE.searchDatalayer;
+            searchDatalayer.search_type = ANALYTICS_SERVICE.searchDatalayerType.MANUAL;
+
             geocoder.geocode( { 'address': address} , function (results, status) {
-                GEOLOCATION_SERVICE.processGeocodeResult(results, status)
+                GEOLOCATION_SERVICE.processGeocodeResult(results, status, searchDatalayer)
             });
         }
     },
@@ -689,10 +736,13 @@ var SEARCH_SERVICE = {
 
         COMMON_SERVICE.scrollToTop();
 
+        var searchDatalayer = ANALYTICS_SERVICE.searchDatalayer;
+        searchDatalayer.search_type = ANALYTICS_SERVICE.searchDatalayerType.GOE_CODE;
+
         var geocoder = GEOLOCATION_SERVICE.geocoder;
 
         geocoder.geocode({'location': location}, function(results, status) {
-            GEOLOCATION_SERVICE.processGeocodeResult(results, status);
+            GEOLOCATION_SERVICE.processGeocodeResult(results, status, searchDatalayer);
         });
     },
     searchByMapCentre : function() {
@@ -715,6 +765,7 @@ var SEARCH_SERVICE = {
         ADDRESS_SERVICE.clearAddresses();
         FILTER_SERVICE.resetFilters();
         NAVIGATION_SERVICE.enableTabs();
+        PLACES_SERVICE.delayInterval = 0;
 
         if (RESULTS_SERVICE.hasResults(searchResult)) {
             NAVIGATION_SERVICE.activateTab(searchResult);
@@ -806,16 +857,6 @@ var RESULTS_SERVICE = {
     },
     getFilteredResults : function() {
         return RESULTS_SERVICE.filteredResults;
-    },
-    getActiveResults : function() {
-
-        console.log('getActiveResults()');
-        if (FILTER_SERVICE.isAnyFilterActive()) {
-            return RESULTS_SERVICE.getFilteredResults();
-        } else {
-            return RESULTS_SERVICE.getLoadedResults();
-        }
-
     },
     hasResults : function (searchResult) {
         return (searchResult !== undefined &&
@@ -1035,12 +1076,10 @@ var PRODUCT_FILTER_SERVICE = {
             item = item.replace(/PLACEHOLDER_ID/g, id);
 
             filterItems = filterItems+item.trim();
-
         });
 
         $('#slProductFilter')[0].innerHTML = filterItems;
         $('#slProductFilterCount').text(products.length+' '+MESSAGES_SERVICE.getMessages().product_filter.products);
-
     },
     activateProductFilter : function(productFilter, active) {
         console.log('activateProductFilter()');
@@ -1187,7 +1226,7 @@ var DIRECTION_SERVICE = {
 
         var saddr = "";
         var location = GEOLOCATION_SERVICE.userLocation;
-        if (location !== undefined) {
+        if (location.lat !== undefined && location.lng !== undefined) {
             saddr = location.lat+","+location.lng;
         }
 
@@ -1371,14 +1410,6 @@ var GEOLOCATION_SERVICE = {
                     lng: position.coords.longitude
                 };
 
-                if (STORE_LOCATOR.config.env === 'DEV' || STORE_LOCATOR.config.env === 'UI') {
-                    console.log('INFO: SL-GEOLOCATION-937bd65: Altering lat/lng for testing environment original:[lat='+userLocation.lat+', lng'+userLocation.lng+']');
-                    userLocation = {
-                        lat: 28.404010,
-                        lng: -81.576900
-                    };
-                }
-
                 map.setCenter(userLocation);
                 map.setZoom(12);
 
@@ -1391,15 +1422,24 @@ var GEOLOCATION_SERVICE = {
             console.log('INFO: SL-GEOLOCATION-c60b105: Browser does not support geolocation.');
         }
     },
-    processGeocodeResult : function(results, status) {
+    processGeocodeResult : function(results, status, searchDatalayer) {
+
         var location = undefined;
 
         if (status === 'OK' && results.length > 0) {
 
-            if (!GEOLOCATION_SERVICE.isValidCountry(results)) {
+            var address = GEOLOCATION_SERVICE.extractAddressData(results[0]);
+
+            ANALYTICS_SERVICE.populateSearchDatalayerByAddress(searchDatalayer, address);
+
+            if (!GEOLOCATION_SERVICE.isValidCountry(address.country)) {
                 COMMON_SERVICE.processInvalidCountry();
-            } else if (!GEOLOCATION_SERVICE.isPermittedState(results)) {
+                searchDatalayer.search_status = ANALYTICS_SERVICE.searchDatalayerStatus.INVALID_COUNTRY;
+                ANALYTICS_SERVICE.pushSearchEvent(searchDatalayer);
+            } else if (!GEOLOCATION_SERVICE.isPermittedState(address.state)) {
                 COMMON_SERVICE.processRestrictedState();
+                searchDatalayer.search_status = ANALYTICS_SERVICE.searchDatalayerStatus.RESTRICTED_STATE;
+                ANALYTICS_SERVICE.pushSearchEvent(searchDatalayer);
             } else {
                 location = results[0].geometry.location;
                 var addressLocation = {
@@ -1407,58 +1447,55 @@ var GEOLOCATION_SERVICE = {
                     lng: location.lng()
                 };
 
-                GEOLOCATION_SERVICE.userLocation = addressLocation;
-                AJAX_SERVICE.searchLocationAjax(addressLocation);
+                AJAX_SERVICE.searchLocationAjax(addressLocation, searchDatalayer);
             }
 
         } else {
             console.log('WARN: SL-GEOLOCATION-2444f96: Geolocation failed for address search with status:'+status);
             COMMON_SERVICE.showNoStoreView();
+            searchDatalayer.search_status = ANALYTICS_SERVICE.searchDatalayerStatus.GEOCODE_FAIL;
+            ANALYTICS_SERVICE.pushSearchEvent(searchDatalayer);
         }
+
     },
-    getStateCode : function(data) {
+    extractAddressData : function(data) {
+
+        var address = {
+            city: '',
+            state : '',
+            zip : '',
+            country : ''
+        };
 
         try {
 
             var addressComponents = data.address_components;
-            for (var i=0; i<addressComponents.length; i++) {
-                if (addressComponents[i].types[0] === 'administrative_area_level_1' || addressComponents[i].types[1] === 'administrative_area_level_1') {
-                    return addressComponents[i].short_name;
-                }
-            }
+            for (var i=0; i < addressComponents.length; i++) {
 
-        } catch (err) {
-            console.log('WARN: SL-GEOLOCATION-563fe2e: Geolocation unable to get state code for address.');
+                if (addressComponents[i].types[0] === 'postal_code') {
+                    address.zip = addressComponents[i].short_name;
+                } else if (addressComponents[i].types[0] === 'locality' || addressComponents[i].types[1] === 'locality') {
+                    address.city = addressComponents[i].short_name;
+                } else if (addressComponents[i].types[0] === 'neighborhood' || addressComponents[i].types[1] === 'neighborhood') {
+                    address.city = addressComponents[i].short_name;
+                } else  if (addressComponents[i].types[0] === 'administrative_area_level_1' || addressComponents[i].types[1] === 'administrative_area_level_1') {
+                    address.state  = addressComponents[i].short_name;
+                } else if (addressComponents[i].types[0] === 'country' || addressComponents[i].types[1] === 'country') {
+                    address.country  = addressComponents[i].short_name;
+                }
+
+            }
+        } catch (e) {
+            console.log('INFO: SL-GEOLOCATION-01d9ee8: Geolocation unable extract address data due to:'+e);
         }
 
-        return '';
+        return address;
     },
-    getCountryCode : function(data) {
-        try {
-
-            var addressComponents = data.address_components;
-            for (var i=0; i<addressComponents.length; i++) {
-                if (addressComponents[i].types[0] === 'country' || addressComponents[i].types[1] === 'country') {
-                    return addressComponents[i].short_name;
-                }
-            }
-
-        } catch (err) {
-            console.log('WARN: SL-GEOLOCATION-58f986: Geolocation unable to get country for address.');
-        }
-
-        return '';
-    },
-    isValidCountry : function(results) {
-        var countryCode = GEOLOCATION_SERVICE.getCountryCode(results[0]);
-
+    isValidCountry : function(countryCode) {
         console.log('INFO: SL-GEOLOCATION-c690617: Geolocation detected country code:['+countryCode+']');
-
         return countryCode === BRAND_SERVICE.getBrandConfig().country;
     },
-    isPermittedState : function(results) {
-
-        var stateCode = GEOLOCATION_SERVICE.getStateCode(results[0]);
+    isPermittedState : function(stateCode) {
 
         console.log('INFO: SL-GEOLOCATION-5ae1cf2: Geolocation detected state:['+stateCode+']');
 
@@ -1760,10 +1797,10 @@ var MESSAGES_SERVICE = {
         document.getElementById('sl-store-locator').innerHTML = msg;
     },
     showSearchInProgress : function() {
-        $('#slSearchInProgress').addClass('show');
+        $('#slSearchInProgress').addClass('sl-show');
     },
     hideSearchInProgress : function() {
-        $('#slSearchInProgress').removeClass('show');
+        $('#slSearchInProgress').removeClass('sl-show');
     },
     getMessages : function() {
         return MESSAGES_SERVICE.messages;
@@ -1842,6 +1879,7 @@ var NAVIGATION_SERVICE = {
 // Service that deal with getting data from Google's places API
 var PLACES_SERVICE = {
 
+    delayInterval : 0,
     googlePlacesService : undefined,
     init :function() {
         console.log('places init()');
@@ -1853,44 +1891,38 @@ var PLACES_SERVICE = {
 
         var count = 0;
         var locationSize = activeLocations.length;
-        var delayTimer = 0;
         $.each(activeLocations, function (index, location) {
 
             if (location.place_id === '') {
 
-                setTimeout(function() {
-                    PLACES_SERVICE.promisePlaceData(location)
-                    .then(function (placeData) {
-                        PLACES_SERVICE.amalgamateGooglePlacesData(location, placeData);
-                        return PLACES_SERVICE.promisePlaceDetails(location);
-                    })
-                    .then (function (placeDetailsData){
-                        console.log("INFO: SL-DETAILS-PROMISE-1eaf4e: RESOLVED["+location.id+"]");
-                        PLACES_SERVICE.amalgamateGooglePlacesDetailsData(location, placeDetailsData);
-                    })
-                    .then(function () {
-                        count++;
-                        if (count === locationSize) {
-                            PLACES_SERVICE.amalgamationCompleted(searchResults);
-                        }
-                    })
-                    .catch(function () {
-                        count++;
-                        console.log("WARN: SL-PLACE-PROMISE-5ad660: REJECTED ["+location.id+"]");
-                        PLACES_SERVICE.amalgamateFailed(location);
-                        if (count === locationSize) {
-                            PLACES_SERVICE.amalgamationCompleted(searchResults);
-                        }
-                    })
-                    /* [IM 19-03-07] - Not supported by IE/Edge
-                    .finally(function () {
-                        count++;
-                        if (count === locationSize) {
-                            PLACES_SERVICE.amalgamationCompleted(searchResults);
-                        }
-                    });
-                    */
-                }, delayTimer = delayTimer + 500);
+                PLACES_SERVICE.promisePlaceData(location)
+                .then(function (placeData) {
+                    PLACES_SERVICE.amalgamateGooglePlacesData(location, placeData);
+                    return PLACES_SERVICE.promisePlaceDetails(location);
+                })
+                .then (function (placeDetailsData){
+                    console.log("INFO: SL-DETAILS-PROMISE-1eaf4e: RESOLVED["+location.id+"]");
+                    PLACES_SERVICE.amalgamateGooglePlacesDetailsData(location, placeDetailsData);
+                })
+                .then(function () {
+                    count++;
+                    if (count === locationSize) {
+                        PLACES_SERVICE.amalgamationCompleted(searchResults);
+                    }
+                })
+                .catch(function () {
+                    count++;
+                    console.log("WARN: SL-PLACE-PROMISE-5ad660: REJECTED ["+location.id+"]");
+                    PLACES_SERVICE.amalgamateFailed(location);
+                });
+                /* [IM 19-03-07] - Not supported by IE/Edge
+                .finally(function () {
+                    count++;
+                    if (count === locationSize) {
+                        PLACES_SERVICE.amalgamationCompleted(searchResults);
+                    }
+                });
+                */
 
             } else {
                 count++;
@@ -1899,6 +1931,8 @@ var PLACES_SERVICE = {
                 }
             }
         });
+
+        PLACES_SERVICE.delayInterval = 500;
     },
     amalgamationCompleted : function(searchResults) {
 
@@ -1916,6 +1950,7 @@ var PLACES_SERVICE = {
         FILTER_SERVICE.enableFilter();
     },
     amalgamateFailed : function(location) {
+        console.log('amalgamateFailed()');
         location.place_id = 'UNKNOWN';
         location.place_price_level = '';
         location.place_rating = '';
@@ -2143,23 +2178,25 @@ var PLACES_SERVICE = {
     },
     getWebSiteName : function(website) {
 
-        if (website === undefined) {
+        if (website === undefined || website === '') {
             return '';
         }
 
         try {
 
+            website = website.replace('http://', '').replace('https://', '').replace('www.', '').replace(/\/$/, '');
+
             if (website.length > 30) {
-                return 'website';
+                return website.substr(0, 25) + '...';
             } else {
-                return website.replace('http://', '').replace('www.', '').replace(/\/$/, '');
+                return website;
             }
 
         } catch (e) {
             console.log('WARN: SL-PLACE-WEBSITE-f3d20b: Failed to get website name for:'+website);
         }
 
-        return '';
+        return 'website';
     }
 };
 var COMMON_SERVICE = {
@@ -2334,24 +2371,24 @@ var HTML_TEMPLATES = {
     '<span class="sl-list-address-city">PLACEHOLDER_CITY</span>' +
     '<span class="sl-list-address-zipcode">PLACEHOLDER_ZIPCODE</span>' +
     '</div>' +
-    '<div class="">GOOGLE_OPENS_AT</div>' +
+    '<div id="slOpensAt-PLACEHOLDER_ID">GOOGLE_OPENS_AT</div>' +
     '</div>' +
     '</div>' +
     '</div>' +
     '<div id="slAddressDetails-PLACEHOLDER_ID" class="sl-list-secondary-content">' +
     '<div class="sl-list-secondary-content-element sl-list-direction-link-container">' +
     '<i class="fa fa-map-marker" aria-hidden="true"></i>' +
-    '<button class="sl-direction-link" data-id="PLACEHOLDER_ID">Directions</button>' +
+    '<button class="slDirectionLink sl-direction-link" data-id="PLACEHOLDER_ID">Directions</button>' +
     '</div>' +
-    '<div class="sl-list-secondary-content-element sl-list-url">' +
+    '<div id="slWebsite-PLACEHOLDER_ID" class="sl-list-secondary-content-element sl-list-url">' +
     '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 17 17" xml:space="preserve"><style type="text/css">.webst0{fill:none;stroke:#16297C;}.webst1{fill:#16297C;}</style><g transform="translate(.5 .5)"><path class="webst0" d="M8,16c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8S12.4,16,8,16"/><path class="webst1" d="M11.2,12c-0.5,0.9-1.2,1.8-2,2.5c1.3-0.2,2.5-0.9,3.4-1.8C12.1,12.4,11.7,12.1,11.2,12 M8.3,14.2c0.9-0.7,1.6-1.5,2.2-2.5c-0.7-0.2-1.4-0.3-2.2-0.3V14.2z M14.6,8.4h-2.4c0,1-0.3,2-0.7,2.9c0.5,0.2,1.1,0.5,1.6,0.9C13.9,11.1,14.5,9.8,14.6,8.4 M13.1,3.9c-0.5,0.4-1.1,0.7-1.6,0.9c0.4,0.9,0.6,1.8,0.7,2.8h2.4C14.5,6.2,14,4.9,13.1,3.9 M8.3,1.9v2.9c0.7,0,1.4-0.1,2.1-0.3C9.9,3.5,9.2,2.6,8.3,1.9 M8.3,7.6h3.1c-0.1-0.9-0.3-1.7-0.6-2.5C10,5.3,9.2,5.5,8.3,5.5V7.6z M12.6,3.3c-0.9-0.9-2.1-1.6-3.5-1.8c0.9,0.8,1.5,1.6,2.1,2.6C11.7,3.9,12.2,3.6,12.6,3.3 M8.3,10.6c0.9,0,1.7,0.2,2.5,0.4c0.4-0.8,0.6-1.7,0.6-2.6H8.3V10.6z M7.5,8.4h-3c0,0.9,0.3,1.8,0.6,2.7c0.8-0.3,1.6-0.4,2.4-0.5V8.4z M4.8,12c-0.5,0.2-0.9,0.4-1.3,0.7c0.9,0.9,2,1.5,3.3,1.7C5.9,13.7,5.3,12.9,4.8,12 M5.5,4.4c0.7,0.2,1.4,0.3,2,0.4V1.9C6.7,2.7,6,3.5,5.5,4.4 M1.5,7.6h2.3c0.1-1,0.3-1.9,0.7-2.8C3.9,4.6,3.3,4.3,2.8,4C2,5,1.5,6.2,1.5,7.6 M2.9,12.1c0.5-0.3,1-0.6,1.5-0.8C4,10.4,3.8,9.4,3.7,8.4H1.5C1.5,9.8,2.1,11.1,2.9,12.1 M7.5,14.1v-2.7c-0.7,0-1.4,0.2-2.1,0.4C6,12.6,6.7,13.4,7.5,14.1 M6.8,1.5C5.5,1.8,4.3,2.4,3.3,3.4c0.5,0.3,0.9,0.5,1.4,0.7C5.3,3.2,6,2.3,6.8,1.5 M7.5,5.5c-0.8,0-1.6-0.2-2.4-0.4C4.8,5.9,4.6,6.7,4.5,7.6h3V5.5z"/></g></svg>' +
     '<a href="GOOGLE_WEBSITE" target="_blank">GOOGLE_WEBSITE_NAME</a>' +
     '</div>'+
-    '<div class="sl-list-secondary-content-element sl-list-phone">' +
+    '<div id="slTelephone-PLACEHOLDER_ID" class="slTelephone sl-list-secondary-content-element sl-list-phone" data-id="PLACEHOLDER_ID">' +
     '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15.1 15.1" xml:space="preserve"><style type="text/css">.telst0{filter:url(#Adobe_OpacityMaskFilter);}.telst1{fill:#FFFFFF;}.telst2{mask:url(#icon_gg-sl-phone-b);}.telst3{filter:url(#Adobe_OpacityMaskFilter_1_);}.telst4{mask:url(#icon_gg-sl-phone-d);fill:#2A3377;}.telst5{filter:url(#Adobe_OpacityMaskFilter_2_);}.telst6{mask:url(#icon_gg-sl-phone-f);fill:#2A3377;}.telst7{fill:#2A3377;}</style><g transform="translate(.5 -2.228)"><defs><filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-0.5" y="2.2" width="15.1" height="15.1"><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></defs><mask maskUnits="userSpaceOnUse" x="-0.5" y="2.2" width="15.1" height="15.1" id="icon_gg-sl-phone-b"><g class="telst0"><polygon id="icon_gg-sl-phone-a" class="telst1" points="-0.5,0.4 15,0.4 15,17.4 -0.5,17.4 "/></g></mask><g class="telst2"><g transform="translate(0 2)"><g transform="translate(0 1.313)"><defs><filter id="Adobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="-0.5" y="0.1" width="13.9" height="13.9"><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></defs><mask maskUnits="userSpaceOnUse" x="-0.5" y="0.1" width="13.9" height="13.9" id="icon_gg-sl-phone-d"><g class="telst3"><polygon id="icon_gg-sl-phone-c" class="telst1" points="-0.5,0.1 13.4,0.1 13.4,14 -0.5,14 "/></g></mask><path class="telst4" d="M13.3,10.4c-0.2-0.7-0.6-1.3-1.1-1.8c-0.5-0.5-1.1-0.9-1.8-1.1l-0.3-0.1L8.3,9.1C7.5,8.6,6.8,8,6.1,7.3C5.5,6.7,4.9,6,4.4,5.3l1.8-1.8L6.1,3.1C5.9,2.5,5.5,1.9,5.1,1.4c-0.7-0.7-1.4-1-1.9-1.2L2.9,0.1l-3.4,3.3l0.1,0.3c0.8,2.3,2.1,4.4,3.8,6.1c1.8,1.8,4,3.2,6.4,4l0.3,0.1l3.3-3.3L13.3,10.4z"/></g><g transform="translate(7.273 .586)"><defs><filter id="Adobe_OpacityMaskFilter_2_" filterUnits="userSpaceOnUse" x="-0.3" y="-0.4" width="7.6" height="7.6"><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/></filter></defs><mask maskUnits="userSpaceOnUse" x="-0.3" y="-0.4" width="7.6" height="7.6" id="icon_gg-sl-phone-f"><g class="telst5"><polygon id="icon_gg-sl-phone-e" class="telst1" points="-0.3,-0.4 7.4,-0.4 7.4,7.3 -0.3,7.3 "/></g></mask><path class="telst6" d="M7.3,7.3L6.3,7.2c0-0.5,0.1-2.9-1.8-4.7C2.6,0.6,0.3,0.7-0.2,0.7l-0.1-1.1c0.8-0.1,3.4-0.1,5.5,2C7.5,3.9,7.4,6.7,7.3,7.3"/></g><path class="telst7" d="M12.4,7.7l-1.1-0.1c0-0.3,0.1-1.8-1.1-3C9,3.5,7.5,3.6,7.2,3.6L7.1,2.5c0.5,0,2.3,0,3.8,1.4C12.4,5.4,12.4,7.2,12.4,7.7"/></g></g></g></svg>' +
     '<a href="tel:GOOGLE_PHONE">GOOGLE_PHONE</a>' +
     '</div>'+
-    '<div class="sl-list-secondary-content-element sl-opening-times-container">'+
+    '<div id="slOpeningTimes-PLACEHOLDER_ID" class="sl-list-secondary-content-element sl-opening-times-container">'+
     '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15.8 15.8" xml:space="preserve"><style type="text/css">.clst0{fill:none;stroke:#16297C;stroke-width:0.842;}</style><g transform="translate(.5 .5)"><path class="clst0" d="M14.9,7.4c0,4.1-3.4,7.5-7.5,7.5s-7.5-3.3-7.5-7.5c0-4.1,3.3-7.5,7.5-7.5S14.9,3.3,14.9,7.4z"/><polyline class="clst0" points="6.7,3.9 6.7,7.6 10.2,11.1 "/></g></svg>' +
     '<ul id="openingTimes-PLACEHOLDER_ID" class="sl-opening-times-list">' +
     '<li class="slOpeningTime sl-opening-time">GOOGLE_OPENING_TIME1</li>'+
@@ -2396,7 +2433,7 @@ var HTML_TEMPLATES = {
     '<div id="slAddressDetails-PLACEHOLDER_ID" class="sl-list-secondary-content">' +
     '<div class="sl-list-secondary-content-element sl-list-direction-link-container">' +
     '<i class="fa fa-map-marker" aria-hidden="true"></i>' +
-    '<button class="sl-direction-link" data-id="PLACEHOLDER_ID">Directions</button>' +
+    '<button class="slDirectionLink sl-direction-link" data-id="PLACEHOLDER_ID">Directions</button>' +
     '</div>' +
     '</div>' +
     '</div>' +
@@ -2469,8 +2506,118 @@ var HTML_TEMPLATES = {
     '<div>' +
     '<div><i class="fa fa-search" aria-hidden="true"></i> Search this area</div>' +
     '</div>' +
-    '</div>',
+    '</div>'
 
+};
+var ANALYTICS_SERVICE = {
 
+    searchDatalayer : {
+        search_type : '',
+        search_status : '',
+        zip : '',
+        city : '',
+        state: '',
+        country : ''
+    },
+    placeDatalayer : {
+        place_id : '',
+        place_type : ''
+    },
+    searchDatalayerType : {
+        MANUAL : 'manual',
+        GOE_CODE : 'geolocation'
+    },
+    searchDatalayerStatus : {
+        OK : 'ok',
+        GEOCODE_FAIL : 'not available',
+        NO_RESULTS : 'no results',
+        INVALID_COUNTRY : 'invalid country',
+        RESTRICTED_STATE : 'restricted state'
+    },
+    placeDatalayerType : {
+        STORE : 'store',
+        BAR : 'bar'
+    },
+    placeDatalayerDefaultPlaceId : 'not available',
+    populateSearchDatalayerByAddress : function(searchDatalayer, address) {
+        searchDatalayer.zip = address.zip;
+        searchDatalayer.city = address.city;
+        searchDatalayer.state = address.state;
+        searchDatalayer.country = address.country;
+    },
+    pushSearchEvent : function(searchDatalayer) {
+
+        console.log('pushSearchEvent()');
+
+        console.log('===================================');
+        console.log('search type:'+searchDatalayer.search_type);
+        console.log('search state:'+searchDatalayer.search_status);
+        console.log('city:'+searchDatalayer.city);
+        console.log('state:'+searchDatalayer.state);
+        console.log('country:'+searchDatalayer.country);
+        console.log('zip:'+searchDatalayer.zip);
+        console.log('===================================');
+
+        try {
+            dataLayer.push({
+                event: 'product locator:search',
+                search : searchDatalayer
+            });
+        } catch (e) {
+            console.log('WARN: SL-ANALYTICS_SERVICE-8b2c99: Failed to push locator search to GTM due to:'+e);
+        }
+    },
+    getSearchEventStatus : function(storedResults) {
+        var status;
+
+        if (RESULTS_SERVICE.hasResults(storedResults)) {
+            status = ANALYTICS_SERVICE.searchDatalayerStatus.OK;
+        } else {
+            status = ANALYTICS_SERVICE.searchDatalayerStatus.NO_RESULTS;
+        }
+
+        return status;
+    },
+    createPlaceDataLayer : function(placeId) {
+
+        var type = '';
+        if (NAVIGATION_SERVICE.isBarTabActive()) {
+            type = ANALYTICS_SERVICE.placeDatalayerType.BAR;
+        } else if (NAVIGATION_SERVICE.isStoreTabActive()) {
+            type = ANALYTICS_SERVICE.placeDatalayerType.STORE;
+        }
+
+        var placeDataLayer = ANALYTICS_SERVICE.placeDatalayer;
+        placeDataLayer.place_id = placeId;
+        placeDataLayer.place_type = type;
+
+        return placeDataLayer;
+    },
+    pushDirectionClickEvent : function(placeDatalayer) {
+
+        console.log('pushDirectionClickEvent() [placeId='+placeDatalayer.place_id+', type='+placeDatalayer.place_type+']');
+
+        try {
+            dataLayer.push({
+                event: 'product locator:getdirection',
+                result : placeDatalayer
+            });
+        } catch (e) {
+            console.log('WARN: SL-ANALYTICS_SERVICE-b450c1: Failed to push locator direction to GTM due to:'+e);
+        }
+    },
+    pushTelephoneClickEvent : function (placeDatalayer) {
+
+        console.log('pushTelephoneClickEvent() [placeId='+placeDatalayer.place_id+', type='+placeDatalayer.place_type+']');
+
+        try {
+            dataLayer.push({
+                event: 'product locator:call',
+                result : placeDatalayer
+            });
+        } catch (e) {
+            console.log('WARN: SL-ANALYTICS_SERVICE-da438ed2: Failed to push locator telephone to GTM due to:'+e);
+        }
+    }
 
 };

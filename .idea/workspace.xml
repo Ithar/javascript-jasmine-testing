@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/storelocator.js" description="amalgamateWithGoogleData : function(searchResults,..." line="1887" />
+    <bookmark url="file://$PROJECT_DIR$/src/storelocator.js" description="amalgamationCompleted : function(searchResults) {" line="1936" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4805fa96-7a06-4b52-bd20-2819c611c5c0" name="Default" comment="Trying to work with ajax calls.">
+    <list default="true" id="4805fa96-7a06-4b52-bd20-2819c611c5c0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/storelocatorSpec.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/storelocatorSpec.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/storelocator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/storelocator.js" afterDir="false" />
     </list>
@@ -28,8 +33,8 @@
       <file leaf-file-name="storelocatorSpec.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
+            <state relative-caret-position="306">
+              <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -37,8 +42,8 @@
       <file leaf-file-name="storelocator.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/storelocator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="1040" column="57" selection-start-line="1040" selection-start-column="56" selection-end-line="1040" selection-end-column="57" />
+            <state relative-caret-position="196">
+              <caret line="1916" column="19" selection-start-line="1916" selection-start-column="19" selection-end-line="1916" selection-end-column="19" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
@@ -83,6 +88,12 @@
       <find>getBrandConfig</find>
       <find>getBrandId</find>
       <find>AJAX_SERVICE</find>
+      <find>prom</find>
+      <find>getBrandStockImage</find>
+      <find>amalgamationCompleted</find>
+      <find>amalgamateFailed</find>
+      <find>amalgamateWithGoogleData</find>
+      <find>UNKNOWN</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,7 +124,6 @@
         <option value="$PROJECT_DIR$/spec/helpers/logHelper.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/jasmine.json" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/temp/jasmine3.3.0.js" />
         <option value="$PROJECT_DIR$/lib/jasmine-html.min.js" />
         <option value="$PROJECT_DIR$/spec/helpers/mock-ajax.js" />
@@ -121,6 +131,7 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/node_modules/jasmine-ajax/lib/mock-ajax.js" />
         <option value="$PROJECT_DIR$/spec/helloWorldSpec.js" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/storelocator.js" />
         <option value="$PROJECT_DIR$/spec/storelocatorSpec.js" />
       </list>
@@ -141,10 +152,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="232" />
-    <option name="y" value="301" />
-    <option name="width" value="1938" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -152,7 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -161,10 +171,21 @@
               <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
               <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
+              <item name="spec" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Jasmine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Jasmine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -181,19 +202,19 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\runner" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec\helpers" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\helpers" />
+      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec\js" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src\spec" />
       <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\src" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\runner" />
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec\helpers" />
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\helpers" />
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine" />
-      <recent name="C:\Users\ithar.malik\Dropbox\TECHNOLOGY\IDK\JavaScript\Jasmine\spec" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -311,7 +332,9 @@
       <workItem from="1552988000022" duration="68000" />
       <workItem from="1553411852902" duration="2629000" />
       <workItem from="1553506536470" duration="1264000" />
-      <workItem from="1553530918104" duration="6014000" />
+      <workItem from="1553530918104" duration="6321000" />
+      <workItem from="1553593267370" duration="731000" />
+      <workItem from="1553602449331" duration="10650000" />
     </task>
     <task id="LOCAL-00001" summary="Just some comments">
       <created>1544117527041</created>
@@ -404,7 +427,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552933023619</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Mocked ajax call.">
+      <created>1553537658888</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1553537658888</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -419,7 +449,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65843000" />
+    <option name="totallyTimeSpent" value="77531000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -430,25 +460,25 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32863188" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3474026" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3474026" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19402985" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19829424" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.2521645" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2521645" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -474,23 +504,15 @@
     <MESSAGE value="Trying to add helper function." />
     <MESSAGE value="Trying to add get helper functions working." />
     <MESSAGE value="Trying to work with ajax calls." />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to work with ajax calls." />
+    <MESSAGE value="Mocked ajax call." />
+    <option name="LAST_COMMIT_MESSAGE" value="Mocked ajax call." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spec/helloWorldSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/calculatorSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/storelocator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -685,17 +707,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/helpers/mock-ajax.js" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="561">
-            <caret line="33" selection-start-line="33" selection-end-line="33" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/runner/test-runner-storelocator.html" />
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -732,10 +743,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/storelocator_greygooseUS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="12" lean-forward="true" selection-end-line="2629" selection-end-column="2" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/storelocator.old.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="970" column="4" selection-start-line="970" selection-start-column="4" selection-end-line="970" selection-end-column="4" />
+          <caret line="1295" column="104" selection-start-line="1295" selection-start-column="104" selection-end-line="1295" selection-end-column="104" />
         </state>
       </provider>
     </entry>
@@ -746,10 +783,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="221">
+            <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/storelocator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="1040" column="57" selection-start-line="1040" selection-start-column="56" selection-end-line="1040" selection-end-column="57" />
+        <state relative-caret-position="196">
+          <caret line="1916" column="19" selection-start-line="1916" selection-start-column="19" selection-end-line="1916" selection-end-column="19" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#li#0;n#!!top" expanded="true" />
@@ -761,8 +809,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/storelocatorSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
+        <state relative-caret-position="306">
+          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
         </state>
       </provider>
     </entry>
